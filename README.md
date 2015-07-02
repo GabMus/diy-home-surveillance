@@ -24,8 +24,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 - cd into the project root folder
 - run the following commands:
 
-	qmake imagecompare-qt
-	make
+qmake imagecompare-qt
+make
 
 - finally make sure "monitor" has execution permissions (chmod +x monitor)
 
