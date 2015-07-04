@@ -17,21 +17,22 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 maxdiff=5 #maximum percentage of change allowed between pictures to confirm there has been no movement or people passing by
+mtimer=10
 fswebcam -r 640x480 --jpeg 85 -D 1 1.jpg #take the first control picture with fswebcam
 while [ true ]
 do
-	sleep 10 #time interval between security checks, in seconds
+	sleep mtimer #time interval between security checks, in seconds
 	fswebcam -r 640x480 --jpeg 85 -D 1 2.jpg #take a comparison picture with fswebcam
 	res=$(./imagecompare 2.jpg 1.jpg) #save the return value of imagecompare to make a comparison
 	if [ "$maxdiff" -le "$res" ] #condition to trigger the security measures
 	then
-		while [ true ]
-		do
-		espeak "Intruder alert!"
-		done
-	
+		FILENAME=$(date +%Y-%m-%d).jpg
+		mv 2.jpg $FILENAME
+		./dropbox-uploader/dropbox-uploader.sh upload $FILENAME ./
+		mtimer=3
 	else
 		mv 2.jpg 1.jpg #if nothing particular happened according to the algorithm, replace the control picture with the second photo to minimize difference in long time
+		mtimer=10
 	fi
 done
 
