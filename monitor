@@ -26,9 +26,9 @@ do
 	res=$(./imagecompare 2.jpg 1.jpg) #save the return value of imagecompare to make a comparison
 	if [ "$maxdiff" -le "$res" ] #condition to trigger the security measures
 	then
-		FILENAME=$(date +%Y-%m-%d).jpg
+		FILENAME=$(date +%Y-%m-%d_%H.%M.%S).jpg
 		mv 2.jpg $FILENAME
-		./dropbox-uploader/dropbox-uploader.sh upload $FILENAME ./
+		./dropbox-uploader/dropbox_uploader.sh upload $FILENAME ./
 		mtimer=3
 	else
 		mv 2.jpg 1.jpg #if nothing particular happened according to the algorithm, replace the control picture with the second photo to minimize difference in long time
