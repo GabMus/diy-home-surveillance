@@ -1,4 +1,5 @@
 # diy-home-surveillance
+###dropbox-upload branch
 DIY webcam-driven home surveillance system
 
 Copyright (C) 2015  Gabriele Musco
@@ -33,8 +34,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #Usage
 
 You can launch the program by executing "monitor" in a terminal.
-It will start monitoring everything your webcam sees and will trigger the "intruder alert" repeated message until it's closed by pressing ctrl+c in the terminal.
-At this point the program is stopped and the photo of the intruder is saved in the root folder of the program.
+It will start monitoring everything your webcam sees and will repeatedly upload every intruder picture it takes to dropbox and changes the timer between pictures to 3 seconds.
+When the intruder gets out, the timer is set back to 10 seconds and pictures are no longer uploaded.
 
 #Notes
 
