@@ -29,6 +29,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
   make
 
+- configure dropbox-uploader, a module by @andreafabrizi, by following his readme in his repo: <https://github.com/andreafabrizi/Dropbox-Uploader>
 - finally make sure "monitor" has execution permissions (chmod +x monitor)
 
 #Usage
