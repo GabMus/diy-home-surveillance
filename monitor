@@ -17,11 +17,11 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 maxdiff=5 #maximum percentage of change allowed between pictures to confirm there has been no movement or people passing by
-fswebcam -r 640x480 --jpeg 85 -D 1 1.jpg #take the first control picture with fswebcam
+fswebcam -r 640x480 --jpeg 85 1.jpg #take the first control picture with fswebcam
 while [ true ]
 do
 	sleep 10 #time interval between security checks, in seconds
-	fswebcam -r 640x480 --jpeg 85 -D 1 2.jpg #take a comparison picture with fswebcam
+	fswebcam -r 640x480 --jpeg 85 2.jpg #take a comparison picture with fswebcam
 	res=$(./imagecompare 2.jpg 1.jpg) #save the return value of imagecompare to make a comparison
 	if [ "$maxdiff" -le "$res" ] #condition to trigger the security measures
 	then
